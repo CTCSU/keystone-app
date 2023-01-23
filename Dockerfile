@@ -4,6 +4,7 @@ RUN mkdir -p /home/www/keystone
 WORKDIR /home/www/keystone
 
 COPY . /home/www/keystone
+RUN yarn install
 RUN yarn build
 
 EXPOSE 3000
