@@ -35,6 +35,6 @@ jobs:
       uses: appleboy/jenkins-action@master
       with:
         url: ${{ env.JENKINS_URL}}
-        user: "chen"
+        user: ${{ env.JENKINS_USER}}
         token: ${{ env.JENKINS_TOKEN }}
-        job: ${{ env.JENKINS_USER}}
+        job: 'keystone_trial'

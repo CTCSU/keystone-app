@@ -11,7 +11,7 @@ on:
     # Publish semver tags as releases.    
     tags: [ 'v*.*.*' ]
     paths:
-      - '**README.MD'
+      - '**README.md'
       - '**config.js'
   workflow_dispatch:
     
