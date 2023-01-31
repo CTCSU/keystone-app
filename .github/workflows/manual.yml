@@ -1,0 +1,40 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+
+env:
+  JENKINS_URL: ${{ secrets.JENKINS_URL}}
+  JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN}}
+  JENKINS_USER: ${{ secrets.JENKINS_USER}}
+
+ 
+
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'Manual trigger jenkins'
+        # Input has to be provided for the workflow to run
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "greet"
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: trigger single Job
+      uses: appleboy/jenkins-action@master
+      with:
+        url: ${{ env.JENKINS_URL}}
+        user: "chen"
+        token: ${{ env.JENKINS_TOKEN }}
+        job: ${{ env.JENKINS_USER}}
