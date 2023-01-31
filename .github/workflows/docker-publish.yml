@@ -8,8 +8,11 @@ name: Docker
 on:
   push:
     branches: [ "main" ]
-    # Publish semver tags as releases.
+    # Publish semver tags as releases.    
     tags: [ 'v*.*.*' ]
+    paths:
+      - '**README.MD'
+      - '**config.js'
   workflow_dispatch:
     
 
