@@ -6,7 +6,7 @@
     "dev": "keystone dev",
     "start": "keystone start",
     "build": "keystone build",
-    "postinstall": "keystone postinstall"
+    "postinstall2": "keystone postinstall"
   },
   "dependencies": {
     "@keystone-6/auth": "^6.0.0",

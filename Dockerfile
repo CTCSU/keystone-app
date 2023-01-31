@@ -1,13 +1,15 @@
-FROM node:16.11.0
-
-RUN mkdir -p /home/www/keystone
+FROM node:16.11.0-alpine as builder
 WORKDIR /home/www/keystone
-
-COPY . /home/www/keystone
+COPY package.json yarn.lock /home/www/keystone/
+COPY .keystone/ /home/www/keystone
 RUN yarn install
-RUN yarn build
+
+From node:16.11.0-alpine
+WORKDIR /home/www/keystone
+COPY --from=builder /home/www/keystone/node_modules ./node_modules
+COPY . .
+RUN yarn postinstall2
 
 EXPOSE 3000
 
-ENTRYPOINT ["yarn"]
-CMD ['dev']
+CMD yarn dev
